@@ -1,0 +1,16 @@
+.git
+.vs
+Debug
+Release
+*.swp
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.exe
+*.sdf
+*.suo
+*.filters
+
