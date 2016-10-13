@@ -1,13 +1,17 @@
 #!/bin/bash
+# This script is used to generate Makefile
 
 print_usage(){
     echo -e "\nUsgae:\n\
-    gen_mf [-fxds]\n\n\
+    gen_mf [-cxdsifh]\n\n\
 Args:\n\
-    -f  force rewrite is Makefile already exist
-    -x  C++ language
-    -d  dynamic lib
-    -s  static lib"
+    -c  use gcc as compile, which is default.
+    -x  use g++ as compiler.
+    -d  include generate dynamic lib command.
+    -s  include generate static lib command.
+    -i  inform when Makefile is already exist, whic is default.
+    -f  force rewrite if Makefile already exist.
+    -h  show this help message.\n"
 }
 
 arg_f=0
@@ -18,9 +22,11 @@ flag_name=cflags
 flags="-W -c"
 
 # parse arguments
-while getopts "fxds" arg
+while getopts "cxdsifh" arg
 do
     case $arg in
+    i)  ;;
+    c)  ;;
     f)
         arg_f=1
         ;;
@@ -35,8 +41,13 @@ do
     s)
         arg_s=1
         ;;
+    h)
+        print_usage
+        exit 0
+        ;;
     ?)
         print_usage
+        exit 1
         ;;
     esac
 done
